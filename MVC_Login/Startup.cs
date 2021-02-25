@@ -64,6 +64,12 @@ namespace MVC_Login
                 options.SlidingExpiration = true;
             });
 
+            services.AddAuthentication().AddFacebook(facebookOption =>
+            {
+                facebookOption.AppId = Configuration["Authentication:Facebook:AppId"];
+                facebookOption.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
+            });
+
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
